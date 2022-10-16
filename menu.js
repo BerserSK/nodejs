@@ -56,35 +56,58 @@ function Menu(opt){
 
   switch (opt){
     case '1':
-      console.log('Saludo');
+      console.log('                    ');
+      console.log('====== Saludo====== ');
+      console.log('                    ');
+      saludo();
     break;
     case '2':
-      console.log('Suma');
+      console.log('                    ');
+      console.log('====== Suma ====== ');
+      console.log('                    ');
       //llamen la funcion que realiza la suma
       suma();
     break;
     case '3':
-        console.log('Resta');
+        console.log('                    ');
+        console.log('====== Resta ====== ');
+        console.log('                    ');
         //llamen la funcion que realiza la suma
         resta();
     break;
     case '4':
-        console.log('Multiplicacion');
+        console.log('                             ');
+        console.log('====== Multiplicacion ====== ');
+        console.log('                             ');
         //llamen la funcion que realiza la suma
         multi();
     break;
     case '5':
-        console.log('Division');
+        console.log('                       ');
+        console.log('====== Division ====== ');
+        console.log('                       ');
         //llamen la funcion que realiza la suma
         divi();
     break;
     case '6':
-        console.log('Objetos');
+        console.log('                      ');
+        console.log('====== Objetos ====== ');
+        console.log('                      ');
         //llamen la funcion que realiza la suma
-        lista();
+        contador();
+    break;
+    case '7':
+        console.log('                          ');
+        console.log('====== Constructor ====== ');
+        console.log('                          ');
+        //llamen la funcion que realiza la suma
+        constructor();
     break;
     case '8':
-      console.log('Despedida');
+      console.log('                        ');
+      console.log('====== Despedida ====== ');
+      console.log('                        ');
+      despedida();
     break;
     case '9':
       console.log('====================================');
@@ -93,86 +116,92 @@ function Menu(opt){
     break;
   }
 
+    // Saludo ------------------------
+    function saludo(){
+      rl.question('---> Ingrese su nombre:', function (nombre) {
+          console.log(`Bienvenido al programa ${nombre}`);
+          rl.close();
+      });
+    }
 
+    // Suma ------------------------
     function suma(){
         rl.question('---> Ingresa el primer numero ?', function (num1) {
             rl.question('---> Ingresa el segundo numero ?', function (num2) {
                 const resultado = parseInt(num1) + parseInt(num2);
-                console.log(resultado)
+                console.log(`El resultado de la suma es ${resultado}`);
                 rl.close();
         })
     })
     } 
 
-
+    // Resta ------------------------
     function resta(){
         rl.question('---> Ingresa el primer numero ?', function (num1) {
             rl.question('---> Ingresa el segundo numero ?', function (num2) {
                 const resultado = parseInt(num1) - parseInt(num2);
-                console.log(resultado)
+                console.log(`El resultado de la resta es ${resultado}`);
                 rl.close();
         })
     })
     } 
 
-
+    // Multiplicacion ------------------------
     function multi(){
         rl.question('---> Ingresa el primer numero ?', function (num1) {
             rl.question('---> Ingresa el segundo numero ?', function (num2) {
                 const resultado = parseInt(num1) * parseInt(num2);
-                console.log(resultado)
+                console.log(`El resultado de la multiplicacion es ${resultado}`);
                 rl.close();
         })
     })
     } 
 
-
+    // Division ------------------------
     function divi(){
         rl.question('---> Ingresa el primer numero ?', function (num1) {
             rl.question('---> Ingresa el segundo numero ?', function (num2) {
                 const resultado = parseInt(num1) / parseInt(num2);
-                console.log(resultado)
+                console.log(`El resultado de la division es ${resultado}`);
                 rl.close();
         })
     })
     } 
 
-
-    function lista(){
-
-        var depositos=[];
-        var nro,monto,canti=0;
-
-        do {
-        rl.question('Ingrese nro de cliente (0 para salir)','');
-
-        nro=parseInt(nro)
-        if (nro!=0)
-        {
-            rl.question('Ingrese monto a depositar','');
-
-            monto=parseInt(monto);
-            // Línea nueva. Si elemento de la matriz no existe, inicializarlo con 0
-            (depositos[nro] == undefined) ? depositos[nro] = 0: false;
-            // Línea modificada. Cambiar = por +=
-            depositos[nro] += monto;
-            // Contador de depósitos
-            canti++
+    // Contador ------------------------
+    function contador(){
+      arrayContador = [null, 'Moto', 'Cicla', 'Carro', 'Patineta', 'Bus', 'Patines', 'Monopatin', 'triciclo']
+      rl.question('---> Cuantos objetos desea contar? : ', function(a){
+        if(a <= arrayContador.length){
+          for(i = 1; i<=a; i++){
+            console.log(`${i}. ${arrayContador[i]}`);
+          }
         }
-        } while (nro!=0);
-
-        var suma=0;
-        //var canti=0;
-
-        for(var f=0;f<depositos.length;f++)
-        {
-        if (depositos[f]!==undefined)
-        {
-            suma=suma+depositos[f];
-            //canti++;
+        else{
+          console.log(`No existen ${a} objetos, existen ${arrayContador.length-1}`);
         }
+        rl.close();
+      });   
+    }
+
+    // Constructor ------------------------
+    function constructor(){
+      const b = []
+      rl.question('---> Ingrese el Nº de animales a generar: ', function(a){
+        console.log('Animales generados: ');
+        for(let i = 1; i<=a; i++){
+          b.push(`Animales Nº ${i}`);
         }
-        console.log('Cantidad de depósitos:'+canti+'<br>');
-        console.log('Total depositado por todos los clientes:'+suma);
+        console.log(`${b}`);
+        rl.close();
+      })
+    }
+
+    // Despedida ------------------------
+    function despedida(){
+      rl.question('---> Ingrese su nombre: ',function(nombre){
+        console.log(`Te despedimos del programa ${nombre}`);
+        rl.close()
+      })
     }
 }
